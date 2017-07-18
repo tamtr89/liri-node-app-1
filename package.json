@@ -5,7 +5,7 @@
   "author": "Justin Cone",
   "homepage": "http://justincone.com",
   "scripts": {
-    "start": "liri liri.js"
+    "start": ""
   },
   "dependencies": {
     "node-spotify-api": "^1.0.5",
