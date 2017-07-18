@@ -64,6 +64,7 @@ function fetchTweets() {
 //-----------------------------------------------------------------------------
 // Use node-spotify-api to fetch track info from Spotify
 function spotifyIt(song) {
+  var output = "";
   var spotify = new Spotify({
     id: "0c3e5d54acab475dbc54a4fad8abecc8",
     secret: "757553f49f3040c689ac8308562d498d"
@@ -76,18 +77,20 @@ function spotifyIt(song) {
     .then(function(response) {
       var songInfo = response.tracks.items[0];
       if (songInfo) {
-        console.log("───────────────────────────────────────────");
-        console.log("SONG:   \"" + toTitleCase(song) + "\"");
-        console.log("ARTIST: " + songInfo.artists[0].name);
-        console.log("ALBUM:  " + songInfo.album.name);
-        console.log("LINK:   " + songInfo.href);
+        output += "───────────────────────────────────────────\n";
+        output += "SONG:   \"" + toTitleCase(song) + "\"\n";
+        output += "ARTIST: " + songInfo.artists[0].name+"\n";
+        output += "ALBUM:  " + songInfo.album.name+"\n";
+        output += "LINK:   " + songInfo.href+"\n";
       } else {
-        console.log("Hmmm... I couldn't find that song. Try another one.");
+        output += "Hmmm... I couldn't find that song. Try another one.\n";
       }
-      console.log("───────────────────────────────────────────");
+      output += "───────────────────────────────────────────";
+      logIt(output);
+      console.log(output);
     })
     .catch(function(err) {
-      console.log(err);
+      output += err + "\n";
     });
 }
 //-----------------------------------------------------------------------------
@@ -124,6 +127,7 @@ function movieThis(title) {
     }
     console.log("───────────────────────────────────────────");
   });
+  logIt(command + " movie done");
 }
 //-----------------------------------------------------------------------------
 // Execute the contents of a text file
@@ -139,6 +143,23 @@ function doIt() {
     command = dataArr[0];
     args = dataArr[1];
     brain(command, args);
+  });
+}
+
+function logIt(output) {
+  // This block of code will create a file called "log.txt"
+  var sep = "═══════════════════════════════════════════";
+  output = sep + "\n" + Date() + "\nRequest: "+command+"\n"+"Argument: "+args+"\n"+output;
+  fs.writeFile("log.txt", output, function(err) {
+
+    // If the code experiences any errors it will log the error to the console.
+    if (err) {
+      return console.log(err);
+    }
+
+    // Otherwise, it will print: "log.txt was updated!"
+    console.log("log.txt was updated!");
+
   });
 }
 //=============================================================================

@@ -1,0 +1,10 @@
+═══════════════════════════════════════════
+Tue Jul 18 2017 17:04:16 GMT-0500 (CDT)
+Request: spotify-this-song
+Argument: mama said
+───────────────────────────────────────────
+SONG:   "Mama Said"
+ARTIST: Lukas Graham
+ALBUM:  Lukas Graham
+LINK:   https://api.spotify.com/v1/tracks/5ArQzSBevAdXTxRY6Ulhbq
+───────────────────────────────────────────
