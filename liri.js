@@ -5,6 +5,7 @@ var keys = require("./keys");
 var request = require('request');
 var Twitter = require('twitter');
 var Spotify = require('node-spotify-api');
+var fs = require("fs");
 // Parse input
 // Position 2 = command
 var command = process.argv[2];
@@ -60,7 +61,7 @@ function spotifyIt(song) {
         console.log("ALBUM:  " + songInfo.album.name);
         console.log("LINK:   " + songInfo.href);
       } else {
-        console.log("Hmmm... couldn't find that song. Try another one.");
+        console.log("Hmmm... I couldn't find that song. Try another one.");
       }
       console.log("───────────────────────────────────────────");
     })
@@ -103,6 +104,23 @@ function movieThis(title) {
     console.log("───────────────────────────────────────────");
   });
 }
+//-----------------------------------------------------------------------------
+// Execute the contents of a text file
+function doIt() {
+  fs.readFile("random.txt", "utf8", function(error, data) {
+    // If the code experiences any errors it will log the error to the console.
+    if (error) {
+      return console.log(error);
+    }
+
+    // Then split it by commas (to make it more readable)
+    var dataArr = data.split(",");
+
+    for (var i = 0; i < dataArr.length; i++) {
+      console.log(dataArr[i]);
+    }
+  });
+}
 //=============================================================================
 // Runtime
 //=============================================================================
@@ -117,7 +135,7 @@ switch (command) {
     movieThis(args);
     break;
   case "do-what-it-says":
-    console.log("You're trying to do what it says.");
+    doIt();
     break;
   default:
     console.log("Sorry, I don't know how to do that yet.");
