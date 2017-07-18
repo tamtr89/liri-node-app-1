@@ -15,6 +15,27 @@ var args = process.argv.slice(3, process.argv.length).join(" ");
 //=============================================================================
 // Functions
 //=============================================================================
+//-----------------------------------------------------------------------------
+// The command center of the app
+function brain(command, args) {
+  switch (command) {
+    case "my-tweets":
+      fetchTweets();
+      break;
+    case "spotify-this-song":
+      spotifyIt(args);
+      break;
+    case "movie-this":
+      movieThis(args);
+      break;
+    case "do-what-it-says":
+      doIt();
+      break;
+    default:
+      console.log("Sorry, I don't know how to do that yet.");
+  }
+}
+//-----------------------------------------------------------------------------
 // String utility, see: https://stackoverflow.com/a/196991/3424316
 function toTitleCase(str) {
   return str.replace(/\w\S*/g, function(txt) {
@@ -115,28 +136,12 @@ function doIt() {
 
     // Then split it by commas (to make it more readable)
     var dataArr = data.split(",");
-
-    for (var i = 0; i < dataArr.length; i++) {
-      console.log(dataArr[i]);
-    }
+    command = dataArr[0];
+    args = dataArr[1];
+    brain(command, args);
   });
 }
 //=============================================================================
 // Runtime
 //=============================================================================
-switch (command) {
-  case "my-tweets":
-    fetchTweets();
-    break;
-  case "spotify-this-song":
-    spotifyIt(args);
-    break;
-  case "movie-this":
-    movieThis(args);
-    break;
-  case "do-what-it-says":
-    doIt();
-    break;
-  default:
-    console.log("Sorry, I don't know how to do that yet.");
-}
+brain(command, args);
