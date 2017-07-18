@@ -1,0 +1,15 @@
+{
+  "name": "liri",
+  "description": "A command line personal assistant that will blow your little mind.",
+  "version": "0.0.1",
+  "author": "Justin Cone",
+  "homepage": "http://justincone.com",
+  "scripts": {
+    "start": "liri liri.js"
+  },
+  "dependencies": {
+    "node-spotify-api": "^1.0.5",
+    "request": "^2.8.1",
+    "twitter": "^1.7.1"
+  }
+}
