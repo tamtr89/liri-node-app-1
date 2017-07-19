@@ -1,0 +1,12 @@
+═══════════════════════════════════════════
+
+Wed Jul 19 2017 06:18:50 GMT-0500 (CDT)
+Command: spotify-this-song
+Argument: I Want it That Way
+
+───────────────────────────────────────────
+SONG:   "I Want It That Way"
+ARTIST: Backstreet Boys
+ALBUM:  The Hits--Chapter One
+LINK:   https://api.spotify.com/v1/tracks/6e40mgJiCid5HRAGrbpGA6
+───────────────────────────────────────────

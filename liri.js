@@ -6,6 +6,7 @@ var request = require('request');
 var Twitter = require('twitter');
 var Spotify = require('node-spotify-api');
 var fs = require("fs");
+var firstRun = require('first-run');
 // Parse input
 // Position 2 = command
 var command = process.argv[2];
@@ -18,6 +19,15 @@ var args = process.argv.slice(3, process.argv.length).join(" ");
 //-----------------------------------------------------------------------------
 // The command center of the app
 function brain(command, args) {
+  // If this is the first time the user is running the app, include title graphic
+  if(firstRun()) {
+    console.log("   __ _      _ ");
+    console.log("  / /(_)_ __(_)");
+    console.log(" / / | | '__| |");
+    console.log("/ /__| | |  | |");
+    console.log("\\____/_|_|  |_|");
+    console.log("Welcome to Liri, the world's lamest personal assistant.");
+  }
   switch (command) {
     case "my-tweets":
       fetchTweets();
@@ -30,6 +40,9 @@ function brain(command, args) {
       break;
     case "do-what-it-says":
       doIt();
+      break;
+    case "clear":
+      clearFirstRun();
       break;
     default:
       console.log("Sorry, I don't know how to do that yet.");
@@ -81,7 +94,7 @@ function spotifyIt(song) {
       var songInfo = response.tracks.items[0];
       if (songInfo) {
         output += "───────────────────────────────────────────\n";
-        output += "SONG:   \"" + toTitleCase(song) + "\"\n";
+        output += "SONG:   \"" + toTitleCase(song).trim() + "\"\n";
         output += "ARTIST: " + songInfo.artists[0].name+"\n";
         output += "ALBUM:  " + songInfo.album.name+"\n";
         output += "LINK:   " + songInfo.href+"\n";
@@ -93,7 +106,7 @@ function spotifyIt(song) {
       console.log(output);
     })
     .catch(function(err) {
-      console.log(err);;
+      console.log(err);
     });
 }
 //-----------------------------------------------------------------------------
@@ -151,22 +164,36 @@ function doIt() {
     brain(command, args);
   });
 }
-
+//-----------------------------------------------------------------------------
+// Log data to an external file
 function logIt(output) {
-  // This block of code will create a file called "log.txt"
+  // Set up the output
   var sep = "═══════════════════════════════════════════\n";
   output = sep + "\n" + Date() + "\nCommand: "+command+"\n"+"Argument: "+args+"\n"+output;
+  // Write/append to the file
   fs.appendFile("log.txt", output, function(err) {
-
     // If the code experiences any errors it will log the error to the console.
     if (err) {
       return console.log(err);
     }
-
     // Otherwise, it will print: "log.txt was updated!"
     console.log("log.txt was updated!");
-
   });
+}
+//-----------------------------------------------------------------------------
+// Reset the app state
+function clearFirstRun() {
+  // Clear out log file
+  fs.writeFile("log.txt", "", function(err) {
+    // If the code experiences any errors it will log the error to the console.
+    if (err) {
+      return console.log(err);
+    }
+    // Otherwise, it will print: "log.txt was updated!"
+    console.log("log.txt was cleared!");
+  });
+  // See https://www.npmjs.com/package/first-run
+  firstRun.clear();
 }
 //=============================================================================
 // Runtime
