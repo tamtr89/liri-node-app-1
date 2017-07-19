@@ -148,9 +148,9 @@ function doIt() {
 
 function logIt(output) {
   // This block of code will create a file called "log.txt"
-  var sep = "═══════════════════════════════════════════";
-  output = sep + "\n" + Date() + "\nRequest: "+command+"\n"+"Argument: "+args+"\n"+output;
-  fs.writeFile("log.txt", output, function(err) {
+  var sep = "\n═══════════════════════════════════════════";
+  output = sep + "\n" + Date() + "\nCommand: "+command+"\n"+"Argument: "+args+"\n"+output;
+  fs.appendFile("log.txt", output, function(err) {
 
     // If the code experiences any errors it will log the error to the console.
     if (err) {
