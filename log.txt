@@ -1,12 +1,51 @@
 ═══════════════════════════════════════════
 
-Wed Jul 19 2017 06:18:50 GMT-0500 (CDT)
-Command: spotify-this-song
-Argument: I Want it That Way
+Wed Jul 19 2017 09:24:46 GMT-0500 (CDT)
+Command: movie-this
+Argument: batman
+───────────────────────────────────────────
+TITLE:           Batman
+YEAR:            1989
+IMDB Rating:     7.6/10
+Rotten Tomatoes: 72%
+Country:         USA, UK
+Language:        English, French
+Plot:            The Dark Knight of Gotham City begins his war on crime with his first major enemy being the clownishly homicidal Joker.
+Actors:          Michael Keaton, Jack Nicholson, Kim Basinger, Robert Wuhl
 
 ───────────────────────────────────────────
-SONG:   "I Want It That Way"
-ARTIST: Backstreet Boys
-ALBUM:  The Hits--Chapter One
-LINK:   https://api.spotify.com/v1/tracks/6e40mgJiCid5HRAGrbpGA6
+═══════════════════════════════════════════
+
+Wed Jul 19 2017 09:48:29 GMT-0500 (CDT)
+Command: my-tweets
+Argument: 
+───────────────────────────────────────────
+Tue Jul 18 19:26:15 +0000 2017
+As I prepare for Cthulu's imminent arrival, a nagging question keeps bothering me: Khakis or slacks? 
+(I don't want to look desperate.)
+───────────────────────────────────────────
+Tue Jul 18 19:22:30 +0000 2017
+I wrote a haiku for Cthulu:
+
+You consume the world,
+Leaving only a wasteland.
+Time for a latte!
+───────────────────────────────────────────
+Tue Jul 18 19:18:55 +0000 2017
+Note to self: Vivisection is much, much easier if you let the goat innards cool in the fridge for 15-20 minutes.
+───────────────────────────────────────────
+Tue Jul 18 19:17:42 +0000 2017
+What's the point of creating interdimensional portals if you're not going to use them for world domination? #amiright
+───────────────────────────────────────────
+Tue Jul 18 19:16:23 +0000 2017
+While eating the leftover carcass of my neighbor last night, I realized something: I'm a lot like Ross from Friends.
+───────────────────────────────────────────
+Tue Jul 18 19:14:41 +0000 2017
+Misplaced my ceremonial goat skull. Again. https://t.co/8H2EWPQjX1
+───────────────────────────────────────────
+Tue Jul 18 18:20:32 +0000 2017
+Just had a delightful chat with Cthulu, our impending overlord. Looking forward to being his minion.
+───────────────────────────────────────────
+Tue Jul 18 17:31:12 +0000 2017
+Just setting up my Twitter. #myfirstTweet
 ───────────────────────────────────────────

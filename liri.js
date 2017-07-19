@@ -7,6 +7,7 @@ var Twitter = require('twitter');
 var Spotify = require('node-spotify-api');
 var fs = require("fs");
 var firstRun = require('first-run');
+var chalk = require('chalk');
 // Parse input
 // Position 2 = command
 var command = process.argv[2];
@@ -21,12 +22,12 @@ var args = process.argv.slice(3, process.argv.length).join(" ");
 function brain(command, args) {
   // If this is the first time the user is running the app, include title graphic
   if(firstRun()) {
-    console.log("   __ _      _ ");
-    console.log("  / /(_)_ __(_)");
-    console.log(" / / | | '__| |");
-    console.log("/ /__| | |  | |");
-    console.log("\\____/_|_|  |_|");
-    console.log("Welcome to Liri, the world's lamest personal assistant.");
+    console.log(chalk.magenta("   __ _      _ "));
+    console.log(chalk.magenta("  / /(_)_ __(_)"));
+    console.log(chalk.yellow(" / / | | '__| |"));
+    console.log(chalk.green("/ /__| | |  | |"));
+    console.log(chalk.blue("\\____/_|_|  |_|"));
+    console.log(chalk.blue("Welcome to Liri, the world's lamest personal assistant."));
   }
   switch (command) {
     case "my-tweets":
@@ -156,7 +157,6 @@ function doIt() {
     if (error) {
       return console.log(error);
     }
-
     // Then split it by commas (to make it more readable)
     var dataArr = data.split(",");
     command = dataArr[0];

@@ -8,6 +8,7 @@
     "start": ""
   },
   "dependencies": {
+    "chalk": "^2.0.1",
     "first-run": "^1.2.0",
     "node-spotify-api": "^1.0.5",
     "request": "^2.8.1",
