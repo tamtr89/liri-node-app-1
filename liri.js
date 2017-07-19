@@ -45,6 +45,7 @@ function toTitleCase(str) {
 //-----------------------------------------------------------------------------
 // Use twitter npm package to fetch latest tweets
 function fetchTweets() {
+  var output = "";
   var client = new Twitter({
     consumer_key: keys.twitterKeys.consumer_key,
     consumer_secret: keys.twitterKeys.consumer_secret,
@@ -54,11 +55,13 @@ function fetchTweets() {
   client.get('statuses/user_timeline', function(error, tweets, response) {
     if (error) throw error;
     for (var i = 0; i < tweets.length; i++) {
-      console.log("───────────────────────────────────────────");
-      console.log(tweets[i].created_at);
-      console.log(tweets[i].text);
+      output += "───────────────────────────────────────────\n";
+      output += tweets[i].created_at + "\n";
+      output += tweets[i].text + "\n";
     }
-    console.log("───────────────────────────────────────────");
+    output += "───────────────────────────────────────────\n";
+    logIt(output);
+    console.log(output);
   });
 }
 //-----------------------------------------------------------------------------
@@ -85,17 +88,18 @@ function spotifyIt(song) {
       } else {
         output += "Hmmm... I couldn't find that song. Try another one.\n";
       }
-      output += "───────────────────────────────────────────";
+      output += "───────────────────────────────────────────\n";
       logIt(output);
       console.log(output);
     })
     .catch(function(err) {
-      output += err + "\n";
+      console.log(err);;
     });
 }
 //-----------------------------------------------------------------------------
 // Use request to fetch movie info from OMDB
 function movieThis(title) {
+  var output = "";
   if (title == "") {
     title = "mr nobody";
   }
@@ -108,26 +112,28 @@ function movieThis(title) {
     if (!error && response.statusCode === 200) {
       var content = JSON.parse(body);
       if (content.Title === undefined) {
-        console.log("───────────────────────────────────────────");
-        console.log("Hmm... I couldn't find that movie. Try another one.");
+        output += "\n───────────────────────────────────────────\n";
+        output += "Hmm... I couldn't find that movie. Try another one.\n";
       } else {
         // Then log the body from the site!
-        console.log("───────────────────────────────────────────");
-        console.log("TITLE:           " + content.Title);
-        console.log("YEAR:            " + content.Year);
-        console.log("IMDB Rating:     " + content.Ratings[0].Value);
-        console.log("Rotten Tomatoes: " + content.Ratings[1].Value);
-        console.log("Country:         " + content.Country);
-        console.log("Language:        " + content.Language);
-        console.log("Plot:            " + content.Plot);
-        console.log("Actors:          " + content.Actors);
+        output += "───────────────────────────────────────────\n";
+        output += "TITLE:           " + content.Title + "\n";
+        output += "YEAR:            " + content.Year + "\n";
+        output += "IMDB Rating:     " + content.Ratings[0].Value + "\n";
+        output += "Rotten Tomatoes: " + content.Ratings[1].Value + "\n";
+        output += "Country:         " + content.Country + "\n";
+        output += "Language:        " + content.Language + "\n";
+        output += "Plot:            " + content.Plot + "\n";
+        output += "Actors:          " + content.Actors + "\n";
       }
     } else {
-      console.log(error);
+      output += error;
     }
-    console.log("───────────────────────────────────────────");
+    output += "\n───────────────────────────────────────────\n";
+    logIt(output);
+    console.log(output);
   });
-  logIt(command + " movie done");
+
 }
 //-----------------------------------------------------------------------------
 // Execute the contents of a text file
@@ -148,7 +154,7 @@ function doIt() {
 
 function logIt(output) {
   // This block of code will create a file called "log.txt"
-  var sep = "\n═══════════════════════════════════════════";
+  var sep = "═══════════════════════════════════════════\n";
   output = sep + "\n" + Date() + "\nCommand: "+command+"\n"+"Argument: "+args+"\n"+output;
   fs.appendFile("log.txt", output, function(err) {
 
