@@ -22,6 +22,7 @@ var args = process.argv.slice(3, process.argv.length).join(" ");
 function brain(command, args) {
   // If this is the first time the user is running the app, include title graphic
   if(firstRun()) {
+    console.log('\033c');
     console.log(chalk.magenta("   __ _      _ "));
     console.log(chalk.magenta("  / /(_)_ __(_)"));
     console.log(chalk.yellow(" / / | | '__| |"));
@@ -190,10 +191,12 @@ function clearFirstRun() {
       return console.log(err);
     }
     // Otherwise, it will print: "log.txt was updated!"
+    console.log('\033c');
     console.log("log.txt was cleared!");
   });
   // See https://www.npmjs.com/package/first-run
   firstRun.clear();
+
 }
 //=============================================================================
 // Runtime

@@ -1,6 +1,6 @@
 ═══════════════════════════════════════════
 
-Wed Jul 19 2017 13:27:00 GMT-0500 (CDT)
+Thu Jul 20 2017 18:51:17 GMT-0500 (CDT)
 Command: movie-this
 Argument: gladiator
 ───────────────────────────────────────────
@@ -13,15 +13,4 @@ Language:        English
 Plot:            When a Roman general is betrayed and his family murdered by an emperor's corrupt son, he comes to Rome as a gladiator to seek revenge.
 Actors:          Russell Crowe, Joaquin Phoenix, Connie Nielsen, Oliver Reed
 
-───────────────────────────────────────────
-═══════════════════════════════════════════
-
-Wed Jul 19 2017 13:27:41 GMT-0500 (CDT)
-Command: spotify-this-song
-Argument: animal spirits
-───────────────────────────────────────────
-SONG:   "Animal Spirits"
-ARTIST: Vulfpeck
-ALBUM:  The Beautiful Game
-LINK:   https://api.spotify.com/v1/tracks/1SHA4IJyiyNobDOrQzFFXy
 ───────────────────────────────────────────
