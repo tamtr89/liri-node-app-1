@@ -40,10 +40,27 @@ function init() {
       filter: function (str){
         return str.toLowerCase();
       }
+    },
+    {
+      type: 'input',
+      name: 'arg',
+      message: 'Cool, what song?',
+      when: function (answers) {
+        return answers.commandChoice==="spotify-this-song";
+      }
+    },
+    {
+      type: 'input',
+      name: 'arg',
+      message: 'Nice, which movie?',
+      when: function (answers) {
+        return answers.commandChoice==="movie-this";
+      }
     }
   ])
   .then(function(answers){
     console.log(answers.commandChoice);
+    brain(answers.commandChoice, answers.arg);
   });
 }
 //-----------------------------------------------------------------------------
