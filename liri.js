@@ -10,10 +10,9 @@ var firstRun = require('first-run');
 var chalk = require('chalk');
 var inquirer = require('inquirer');
 // Parse input
-// Position 2 = command
-var command = process.argv[2];
-// Anything after that is an argument for that command
-var args = process.argv.slice(3, process.argv.length).join(" ");
+// These used to be from process.argv, but now they're coming from prompts
+var command;
+var args;
 
 //=============================================================================
 // Functions
@@ -23,20 +22,21 @@ var args = process.argv.slice(3, process.argv.length).join(" ");
 function init() {
   // If this is the first time the user is running the app, include title graphic
   if(firstRun()) {
-    console.log('\033c');
+    console.log('\033c'); // clears out the terminal... usually.
     console.log(chalk.magenta("   __ _      _ "));
     console.log(chalk.magenta("  / /(_)_ __(_)"));
     console.log(chalk.yellow(" / / | | '__| |"));
     console.log(chalk.green("/ /__| | |  | |"));
     console.log(chalk.blue("\\____/_|_|  |_|"));
     console.log(chalk.blue("Welcome to Liri, the world's lamest personal assistant."));
+    console.log(chalk.gray("───────────────────────────────────────────"));
   }
   inquirer.prompt([
     {
       "name": 'commandChoice',
       "message": 'What would you like to do?',
       "type": 'list',
-      "choices": ['spotify-this-song', 'movie-this', 'do-what-it-says', 'clear'],
+      "choices": ['my-tweets','spotify-this-song', 'movie-this', 'do-what-it-says', 'clear'],
       filter: function (str){
         return str.toLowerCase();
       }
@@ -60,6 +60,8 @@ function init() {
   ])
   .then(function(answers){
     console.log(answers.commandChoice);
+    command = answers.commandChoice;
+    args = answers.arg;
     brain(answers.commandChoice, answers.arg);
   });
 }
@@ -206,7 +208,11 @@ function doIt() {
 function logIt(output) {
   // Set up the output
   var sep = "═══════════════════════════════════════════\n";
-  output = sep + "\n" + Date() + "\nCommand: "+command+"\n"+"Argument: "+args+"\n"+output;
+  var argsText = "";
+  if(args) {
+    argsText = "Argument: "+args+"\n";
+  }
+  output = sep + "\n" + Date() + "\nCommand: "+command+"\n"+argsText+output;
   // Write/append to the file
   fs.appendFile("log.txt", output, function(err) {
     // If the code experiences any errors it will log the error to the console.
@@ -214,7 +220,7 @@ function logIt(output) {
       return console.log(err);
     }
     // Otherwise, it will print: "log.txt was updated!"
-    console.log("log.txt was updated!");
+    console.log("The log file was updated!");
   });
 }
 //-----------------------------------------------------------------------------
@@ -228,7 +234,8 @@ function clearFirstRun() {
     }
     // Otherwise, it will print: "log.txt was updated!"
     console.log('\033c');
-    console.log("log.txt was cleared!");
+    console.log("The log file was cleared! I feel... young. Fresh. New.");
+    console.log(chalk.gray("───────────────────────────────────────────"));
   });
   // See https://www.npmjs.com/package/first-run
   firstRun.clear();
