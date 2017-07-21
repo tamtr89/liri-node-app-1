@@ -8,6 +8,7 @@ var Spotify = require('node-spotify-api');
 var fs = require("fs");
 var firstRun = require('first-run');
 var chalk = require('chalk');
+var inquirer = require('inquirer');
 // Parse input
 // Position 2 = command
 var command = process.argv[2];
@@ -18,8 +19,8 @@ var args = process.argv.slice(3, process.argv.length).join(" ");
 // Functions
 //=============================================================================
 //-----------------------------------------------------------------------------
-// The command center of the app
-function brain(command, args) {
+// Prompts user for input
+function init() {
   // If this is the first time the user is running the app, include title graphic
   if(firstRun()) {
     console.log('\033c');
@@ -30,6 +31,24 @@ function brain(command, args) {
     console.log(chalk.blue("\\____/_|_|  |_|"));
     console.log(chalk.blue("Welcome to Liri, the world's lamest personal assistant."));
   }
+  inquirer.prompt([
+    {
+      "name": 'commandChoice',
+      "message": 'What would you like to do?',
+      "type": 'list',
+      "choices": ['spotify-this-song', 'movie-this', 'do-what-it-says', 'clear'],
+      filter: function (str){
+        return str.toLowerCase();
+      }
+    }
+  ])
+  .then(function(answers){
+    console.log(answers.commandChoice);
+  });
+}
+//-----------------------------------------------------------------------------
+// The command center of the app
+function brain(command, args) {
   switch (command) {
     case "my-tweets":
       fetchTweets();
@@ -201,4 +220,5 @@ function clearFirstRun() {
 //=============================================================================
 // Runtime
 //=============================================================================
-brain(command, args);
+//brain(command, args);
+init();
