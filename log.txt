@@ -1,6 +1,6 @@
 ═══════════════════════════════════════════
 
-Fri Jul 21 2017 13:00:16 GMT-0500 (CDT)
+Fri Jul 21 2017 13:38:13 GMT-0500 (CDT)
 Command: my-tweets
 ───────────────────────────────────────────
 Tue Jul 18 19:26:15 +0000 2017
@@ -31,47 +31,4 @@ Just had a delightful chat with Cthulu, our impending overlord. Looking forward 
 ───────────────────────────────────────────
 Tue Jul 18 17:31:12 +0000 2017
 Just setting up my Twitter. #myfirstTweet
-───────────────────────────────────────────
-═══════════════════════════════════════════
-
-Fri Jul 21 2017 13:00:30 GMT-0500 (CDT)
-Command: spotify-this-song
-Argument: ragdoll
-───────────────────────────────────────────
-SONG:   "Ragdoll"
-ARTIST: Maroon 5
-ALBUM:  Songs About Jane: 10th Anniversary Edition
-LINK:   https://api.spotify.com/v1/tracks/39gJMnnXw8x2Im44B8BM3P
-───────────────────────────────────────────
-═══════════════════════════════════════════
-
-Fri Jul 21 2017 13:00:47 GMT-0500 (CDT)
-Command: movie-this
-Argument: candyman
-───────────────────────────────────────────
-TITLE:           Candyman
-YEAR:            1992
-IMDB Rating:     6.6/10
-Rotten Tomatoes: 70%
-Country:         USA, UK
-Language:        English
-Plot:            The Candyman, a murderous soul with a hook for a hand, is accidentally summoned to reality by a skeptic grad student researching the monster's myth.
-Actors:          Virginia Madsen, Tony Todd, Xander Berkeley, Kasi Lemmons
-
-───────────────────────────────────────────
-═══════════════════════════════════════════
-
-Fri Jul 21 2017 13:02:15 GMT-0500 (CDT)
-Command: movie-this
-Argument: gladiator
-───────────────────────────────────────────
-TITLE:           Gladiator
-YEAR:            2000
-IMDB Rating:     8.5/10
-Rotten Tomatoes: 76%
-Country:         USA, UK
-Language:        English
-Plot:            When a Roman general is betrayed and his family murdered by an emperor's corrupt son, he comes to Rome as a gladiator to seek revenge.
-Actors:          Russell Crowe, Joaquin Phoenix, Connie Nielsen, Oliver Reed
-
 ───────────────────────────────────────────

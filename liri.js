@@ -9,7 +9,7 @@ var fs = require("fs");
 var firstRun = require('first-run');
 var chalk = require('chalk');
 var inquirer = require('inquirer');
-// Parse input
+// GLOBAL VARIABLES
 // These used to be from process.argv, but now they're coming from prompts
 var command;
 var args;
@@ -36,7 +36,7 @@ function init() {
       "name": 'commandChoice',
       "message": 'What would you like to do?',
       "type": 'list',
-      "choices": ['my-tweets','spotify-this-song', 'movie-this', 'do-what-it-says', 'clear'],
+      "choices": ['my-tweets','spotify-this-song', 'movie-this', 'do-what-it-says', 'clear', 'exit'],
       filter: function (str){
         return str.toLowerCase();
       }
@@ -59,7 +59,6 @@ function init() {
     }
   ])
   .then(function(answers){
-    console.log(answers.commandChoice);
     command = answers.commandChoice;
     args = answers.arg;
     brain(answers.commandChoice, answers.arg);
@@ -83,6 +82,9 @@ function brain(command, args) {
       break;
     case "clear":
       clearFirstRun();
+      break;
+    case "exit":
+      endProgram();
       break;
     default:
       console.log("Sorry, I don't know how to do that yet.");
@@ -115,6 +117,7 @@ function fetchTweets() {
     output += "───────────────────────────────────────────\n";
     logIt(output);
     console.log(output);
+    init();
   });
 }
 //-----------------------------------------------------------------------------
@@ -144,9 +147,11 @@ function spotifyIt(song) {
       output += "───────────────────────────────────────────\n";
       logIt(output);
       console.log(output);
+      init();
     })
     .catch(function(err) {
       console.log(err);
+      init();
     });
 }
 //-----------------------------------------------------------------------------
@@ -181,10 +186,12 @@ function movieThis(title) {
       }
     } else {
       output += error;
+      init();
     }
     output += "\n───────────────────────────────────────────\n";
     logIt(output);
     console.log(output);
+    init();
   });
 
 }
@@ -219,8 +226,6 @@ function logIt(output) {
     if (err) {
       return console.log(err);
     }
-    // Otherwise, it will print: "log.txt was updated!"
-    console.log("The log file was updated!");
   });
 }
 //-----------------------------------------------------------------------------
@@ -236,10 +241,15 @@ function clearFirstRun() {
     console.log('\033c');
     console.log("The log file was cleared! I feel... young. Fresh. New.");
     console.log(chalk.gray("───────────────────────────────────────────"));
+    init();
   });
   // See https://www.npmjs.com/package/first-run
   firstRun.clear();
-
+}
+//-----------------------------------------------------------------------------
+// Reset the app state
+function endProgram() {
+  return;
 }
 //=============================================================================
 // Runtime
