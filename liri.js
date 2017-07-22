@@ -8,27 +8,65 @@ var Spotify = require('node-spotify-api');
 var fs = require("fs");
 var firstRun = require('first-run');
 var chalk = require('chalk');
-// Parse input
-// Position 2 = command
-var command = process.argv[2];
-// Anything after that is an argument for that command
-var args = process.argv.slice(3, process.argv.length).join(" ");
+var inquirer = require('inquirer');
+// GLOBAL VARIABLES
+// These used to be from process.argv, but now they're coming from prompts
+var command;
+var args;
 
 //=============================================================================
 // Functions
 //=============================================================================
 //-----------------------------------------------------------------------------
-// The command center of the app
-function brain(command, args) {
+// Prompts user for input
+function init() {
   // If this is the first time the user is running the app, include title graphic
   if(firstRun()) {
+    console.log('\033c'); // clears out the terminal... usually.
     console.log(chalk.magenta("   __ _      _ "));
     console.log(chalk.magenta("  / /(_)_ __(_)"));
     console.log(chalk.yellow(" / / | | '__| |"));
     console.log(chalk.green("/ /__| | |  | |"));
     console.log(chalk.blue("\\____/_|_|  |_|"));
     console.log(chalk.blue("Welcome to Liri, the world's lamest personal assistant."));
+    console.log(chalk.gray("───────────────────────────────────────────"));
   }
+  inquirer.prompt([
+    {
+      "name": 'commandChoice',
+      "message": 'What would you like to do?',
+      "type": 'list',
+      "choices": ['my-tweets','spotify-this-song', 'movie-this', 'do-what-it-says', 'clear', 'exit'],
+      filter: function (str){
+        return str.toLowerCase();
+      }
+    },
+    {
+      type: 'input',
+      name: 'arg',
+      message: 'Cool, what song?',
+      when: function (answers) {
+        return answers.commandChoice==="spotify-this-song";
+      }
+    },
+    {
+      type: 'input',
+      name: 'arg',
+      message: 'Nice, which movie?',
+      when: function (answers) {
+        return answers.commandChoice==="movie-this";
+      }
+    }
+  ])
+  .then(function(answers){
+    command = answers.commandChoice;
+    args = answers.arg;
+    brain(answers.commandChoice, answers.arg);
+  });
+}
+//-----------------------------------------------------------------------------
+// The command center of the app
+function brain(command, args) {
   switch (command) {
     case "my-tweets":
       fetchTweets();
@@ -44,6 +82,9 @@ function brain(command, args) {
       break;
     case "clear":
       clearFirstRun();
+      break;
+    case "exit":
+      endProgram();
       break;
     default:
       console.log("Sorry, I don't know how to do that yet.");
@@ -76,6 +117,7 @@ function fetchTweets() {
     output += "───────────────────────────────────────────\n";
     logIt(output);
     console.log(output);
+    init();
   });
 }
 //-----------------------------------------------------------------------------
@@ -105,9 +147,11 @@ function spotifyIt(song) {
       output += "───────────────────────────────────────────\n";
       logIt(output);
       console.log(output);
+      init();
     })
     .catch(function(err) {
       console.log(err);
+      init();
     });
 }
 //-----------------------------------------------------------------------------
@@ -142,10 +186,12 @@ function movieThis(title) {
       }
     } else {
       output += error;
+      init();
     }
     output += "\n───────────────────────────────────────────\n";
     logIt(output);
     console.log(output);
+    init();
   });
 
 }
@@ -169,15 +215,17 @@ function doIt() {
 function logIt(output) {
   // Set up the output
   var sep = "═══════════════════════════════════════════\n";
-  output = sep + "\n" + Date() + "\nCommand: "+command+"\n"+"Argument: "+args+"\n"+output;
+  var argsText = "";
+  if(args) {
+    argsText = "Argument: "+args+"\n";
+  }
+  output = sep + "\n" + Date() + "\nCommand: "+command+"\n"+argsText+output;
   // Write/append to the file
   fs.appendFile("log.txt", output, function(err) {
     // If the code experiences any errors it will log the error to the console.
     if (err) {
       return console.log(err);
     }
-    // Otherwise, it will print: "log.txt was updated!"
-    console.log("log.txt was updated!");
   });
 }
 //-----------------------------------------------------------------------------
@@ -190,12 +238,21 @@ function clearFirstRun() {
       return console.log(err);
     }
     // Otherwise, it will print: "log.txt was updated!"
-    console.log("log.txt was cleared!");
+    console.log('\033c');
+    console.log("The log file was cleared! I feel... young. Fresh. New.");
+    console.log(chalk.gray("───────────────────────────────────────────"));
+    init();
   });
   // See https://www.npmjs.com/package/first-run
   firstRun.clear();
 }
+//-----------------------------------------------------------------------------
+// Reset the app state
+function endProgram() {
+  return;
+}
 //=============================================================================
 // Runtime
 //=============================================================================
-brain(command, args);
+//brain(command, args);
+init();

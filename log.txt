@@ -14,14 +14,19 @@ Plot:            When a Roman general is betrayed and his family murdered by an 
 Actors:          Russell Crowe, Joaquin Phoenix, Connie Nielsen, Oliver Reed
 
 ───────────────────────────────────────────
-═══════════════════════════════════════════
+Tue Jul 18 19:26:15 +0000 2017
+As I prepare for Cthulu's imminent arrival, a nagging question keeps bothering me: Khakis or slacks?
+(I don't want to look desperate.)
+───────────────────────────────────────────
+Tue Jul 18 19:22:30 +0000 2017
+I wrote a haiku for Cthulu:
 
 Wed Jul 19 2017 16:50:13 GMT-0500 (CDT)
 Command: my-tweets
-Argument: 
+Argument:
 ───────────────────────────────────────────
 Tue Jul 18 19:26:15 +0000 2017
-As I prepare for Cthulu's imminent arrival, a nagging question keeps bothering me: Khakis or slacks? 
+As I prepare for Cthulu's imminent arrival, a nagging question keeps bothering me: Khakis or slacks?
 (I don't want to look desperate.)
 ───────────────────────────────────────────
 Tue Jul 18 19:22:30 +0000 2017
