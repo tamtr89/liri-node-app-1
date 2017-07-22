@@ -36,17 +36,14 @@ function init() {
       "name": 'commandChoice',
       "message": 'What would you like to do?',
       "type": 'list',
-      "choices": ['my-tweets','spotify-this-song', 'movie-this', 'do-what-it-says', 'clear', 'exit'],
-      filter: function (str){
-        return str.toLowerCase();
-      }
+      "choices": ['Show My Tweets', 'Spotify a Song', 'Fetch Movie Info', 'Run Script', 'Clear Log', 'Exit Liri'],
     },
     {
       type: 'input',
       name: 'arg',
       message: 'Cool, what song?',
       when: function (answers) {
-        return answers.commandChoice==="spotify-this-song";
+        return answers.commandChoice==="Spotify a Song";
       }
     },
     {
@@ -54,12 +51,13 @@ function init() {
       name: 'arg',
       message: 'Nice, which movie?',
       when: function (answers) {
-        return answers.commandChoice==="movie-this";
+        return answers.commandChoice==="Fetch Movie Info";
       }
     }
   ])
   .then(function(answers){
     command = answers.commandChoice;
+    console.log(command);
     args = answers.arg;
     brain(answers.commandChoice, answers.arg);
   });
@@ -68,22 +66,22 @@ function init() {
 // The command center of the app
 function brain(command, args) {
   switch (command) {
-    case "my-tweets":
+    case "Show My Tweets":
       fetchTweets();
       break;
-    case "spotify-this-song":
+    case "Spotify a Song":
       spotifyIt(args);
       break;
-    case "movie-this":
+    case "Fetch Movie Info":
       movieThis(args);
       break;
-    case "do-what-it-says":
+    case "Run Script":
       doIt();
       break;
-    case "clear":
+    case "Clear Log":
       clearFirstRun();
       break;
-    case "exit":
+    case "Exit Liri":
       endProgram();
       break;
     default:
@@ -110,9 +108,9 @@ function fetchTweets() {
   client.get('statuses/user_timeline', function(error, tweets, response) {
     if (error) throw error;
     for (var i = 0; i < tweets.length; i++) {
-      output += "───────────────────────────────────────────\n";
-      output += tweets[i].created_at + "\n";
-      output += tweets[i].text + "\n";
+      output += chalk.black("───────────────────────────────────────────\n");
+      output += chalk.blue(tweets[i].created_at) + "\n";
+      output += chalk.blue(tweets[i].text) + "\n";
     }
     output += "───────────────────────────────────────────\n";
     logIt(output);
@@ -123,6 +121,9 @@ function fetchTweets() {
 //-----------------------------------------------------------------------------
 // Use node-spotify-api to fetch track info from Spotify
 function spotifyIt(song) {
+  if(song=="") {
+    song = "Mysterious Ways";
+  }
   var output = "";
   var spotify = new Spotify({
     id: "0c3e5d54acab475dbc54a4fad8abecc8",
