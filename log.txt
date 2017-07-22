@@ -1,68 +1,76 @@
 ═══════════════════════════════════════════
 
-Wed Jul 19 2017 14:27:22 GMT-0500 (CDT)
-Command: movie-this
-Argument: gladiator
-───────────────────────────────────────────
-TITLE:           Gladiator
-YEAR:            2000
-IMDB Rating:     8.5/10
-Rotten Tomatoes: 76%
-Country:         USA, UK
-Language:        English
-Plot:            When a Roman general is betrayed and his family murdered by an emperor's corrupt son, he comes to Rome as a gladiator to seek revenge.
-Actors:          Russell Crowe, Joaquin Phoenix, Connie Nielsen, Oliver Reed
-
-───────────────────────────────────────────
-Tue Jul 18 19:26:15 +0000 2017
-As I prepare for Cthulu's imminent arrival, a nagging question keeps bothering me: Khakis or slacks?
-(I don't want to look desperate.)
-───────────────────────────────────────────
-Tue Jul 18 19:22:30 +0000 2017
-I wrote a haiku for Cthulu:
-
-Wed Jul 19 2017 16:50:13 GMT-0500 (CDT)
-Command: my-tweets
-Argument:
-───────────────────────────────────────────
-Tue Jul 18 19:26:15 +0000 2017
-As I prepare for Cthulu's imminent arrival, a nagging question keeps bothering me: Khakis or slacks?
-(I don't want to look desperate.)
-───────────────────────────────────────────
-Tue Jul 18 19:22:30 +0000 2017
-I wrote a haiku for Cthulu:
-
-You consume the world,
-Leaving only a wasteland.
-Time for a latte!
-───────────────────────────────────────────
-Tue Jul 18 19:18:55 +0000 2017
-Note to self: Vivisection is much, much easier if you let the goat innards cool in the fridge for 15-20 minutes.
-───────────────────────────────────────────
-Tue Jul 18 19:17:42 +0000 2017
-What's the point of creating interdimensional portals if you're not going to use them for world domination? #amiright
-───────────────────────────────────────────
-Tue Jul 18 19:16:23 +0000 2017
-While eating the leftover carcass of my neighbor last night, I realized something: I'm a lot like Ross from Friends.
-───────────────────────────────────────────
-Tue Jul 18 19:14:41 +0000 2017
-Misplaced my ceremonial goat skull. Again. https://t.co/8H2EWPQjX1
-───────────────────────────────────────────
-Tue Jul 18 18:20:32 +0000 2017
-Just had a delightful chat with Cthulu, our impending overlord. Looking forward to being his minion.
-───────────────────────────────────────────
-Tue Jul 18 17:31:12 +0000 2017
-Just setting up my Twitter. #myfirstTweet
+Sat Jul 22 2017 10:59:54 GMT-0500 (CDT)
+Command: Show My Tweets
+[30m───────────────────────────────────────────[39m
+[30m[39m[34mTue Jul 18 19:26:15 +0000 2017[39m
+[34mAs I prepare for Cthulu's imminent arrival, a nagging question keeps bothering me: Khakis or slacks? [39m
+[34m(I don't want to look desperate.)[39m
+[30m───────────────────────────────────────────[39m
+[30m[39m[34mTue Jul 18 19:22:30 +0000 2017[39m
+[34mI wrote a haiku for Cthulu:[39m
+[34m[39m
+[34mYou consume the world,[39m
+[34mLeaving only a wasteland.[39m
+[34mTime for a latte![39m
+[30m───────────────────────────────────────────[39m
+[30m[39m[34mTue Jul 18 19:18:55 +0000 2017[39m
+[34mNote to self: Vivisection is much, much easier if you let the goat innards cool in the fridge for 15-20 minutes.[39m
+[30m───────────────────────────────────────────[39m
+[30m[39m[34mTue Jul 18 19:17:42 +0000 2017[39m
+[34mWhat's the point of creating interdimensional portals if you're not going to use them for world domination? #amiright[39m
+[30m───────────────────────────────────────────[39m
+[30m[39m[34mTue Jul 18 19:16:23 +0000 2017[39m
+[34mWhile eating the leftover carcass of my neighbor last night, I realized something: I'm a lot like Ross from Friends.[39m
+[30m───────────────────────────────────────────[39m
+[30m[39m[34mTue Jul 18 19:14:41 +0000 2017[39m
+[34mMisplaced my ceremonial goat skull. Again. https://t.co/8H2EWPQjX1[39m
+[30m───────────────────────────────────────────[39m
+[30m[39m[34mTue Jul 18 18:20:32 +0000 2017[39m
+[34mJust had a delightful chat with Cthulu, our impending overlord. Looking forward to being his minion.[39m
+[30m───────────────────────────────────────────[39m
+[30m[39m[34mTue Jul 18 17:31:12 +0000 2017[39m
+[34mJust setting up my Twitter. #myfirstTweet[39m
 ───────────────────────────────────────────
 ═══════════════════════════════════════════
 
-Sat Jul 22 2017 10:48:14 GMT-0500 (CDT)
-Command: spotify-this-song
-Argument: I Want it That Way
+Sat Jul 22 2017 10:59:58 GMT-0500 (CDT)
+Command: Spotify a Song
+Argument: sdgsdg
+Hmmm... I couldn't find that song. Try another one.
+───────────────────────────────────────────
+═══════════════════════════════════════════
+
+Sat Jul 22 2017 11:00:05 GMT-0500 (CDT)
+Command: Fetch Movie Info
+Argument: gjjkhasf
 
 ───────────────────────────────────────────
-SONG:   "I Want It That Way"
-ARTIST: Backstreet Boys
-ALBUM:  The Hits--Chapter One
-LINK:   https://api.spotify.com/v1/tracks/6e40mgJiCid5HRAGrbpGA6
+Hmm... I couldn't find that movie. Try another one.
+
+───────────────────────────────────────────
+═══════════════════════════════════════════
+
+Sat Jul 22 2017 11:00:09 GMT-0500 (CDT)
+Command: Spotify a Song
+───────────────────────────────────────────
+SONG:   "Mysterious Ways"
+ARTIST: U2
+ALBUM:  Achtung Baby
+LINK:   https://api.spotify.com/v1/tracks/50JK22El2PTIzZBU2liLDI
+───────────────────────────────────────────
+═══════════════════════════════════════════
+
+Sat Jul 22 2017 11:00:12 GMT-0500 (CDT)
+Command: Fetch Movie Info
+───────────────────────────────────────────
+TITLE:           Mr. Nobody
+YEAR:            2009
+IMDB Rating:     7.9/10
+Rotten Tomatoes: 64%
+Country:         Belgium, Germany, Canada, France, USA, UK
+Language:        English, Mohawk
+Plot:            A boy stands on a station platform as a train is about to leave. Should he go with his mother or stay with his father? Infinite possibilities arise from this decision. As long as he doesn't choose, anything is possible.
+Actors:          Jared Leto, Sarah Polley, Diane Kruger, Linh Dan Pham
+
 ───────────────────────────────────────────

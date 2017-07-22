@@ -86,6 +86,7 @@ function brain(command, args) {
       break;
     default:
       console.log("Sorry, I don't know how to do that yet.");
+      init();
   }
 }
 //-----------------------------------------------------------------------------
