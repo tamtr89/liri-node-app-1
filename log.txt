@@ -1,0 +1,11 @@
+═══════════════════════════════════════════
+
+Sun Jul 23 2017 18:39:35 GMT-0500 (CDT)
+Command: Spotify a Song
+Argument: Animal Spirits
+───────────────────────────────────────────
+[32mSONG:   "Animal Spirits"[39m
+[32m[39m[32mARTIST: Vulfpeck[39m
+[32m[39m[32mALBUM:  The Beautiful Game[39m
+[32m[39m[32mLINK:   https://api.spotify.com/v1/tracks/1SHA4IJyiyNobDOrQzFFXy[39m
+[32m[39m───────────────────────────────────────────
