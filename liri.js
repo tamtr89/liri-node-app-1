@@ -139,12 +139,12 @@ function spotifyIt(song) {
       var songInfo = response.tracks.items[0];
       if (songInfo) {
         output += "───────────────────────────────────────────\n";
-        output += "SONG:   \"" + toTitleCase(song).trim() + "\"\n";
-        output += "ARTIST: " + songInfo.artists[0].name+"\n";
-        output += "ALBUM:  " + songInfo.album.name+"\n";
-        output += "LINK:   " + songInfo.href+"\n";
+        output += chalk.green("SONG:   \"" + toTitleCase(song).trim() + "\"\n");
+        output += chalk.green("ARTIST: " + songInfo.artists[0].name+"\n");
+        output += chalk.green("ALBUM:  " + songInfo.album.name+"\n");
+        output += chalk.green("LINK:   " + songInfo.href+"\n");
       } else {
-        output += "Hmmm... I couldn't find that song. Try another one.\n";
+        output += chalk.green("Hmmm... I couldn't find that song. Try another one.\n");
       }
       output += "───────────────────────────────────────────\n";
       logIt(output);
@@ -173,18 +173,18 @@ function movieThis(title) {
       var content = JSON.parse(body);
       if (content.Title === undefined) {
         output += "\n───────────────────────────────────────────\n";
-        output += "Hmm... I couldn't find that movie. Try another one.\n";
+        output += chalk.yellow("Hmm... I couldn't find that movie. Try another one.\n");
       } else {
         // Then log the body from the site!
         output += "───────────────────────────────────────────\n";
-        output += "TITLE:           " + content.Title + "\n";
-        output += "YEAR:            " + content.Year + "\n";
-        output += "IMDB Rating:     " + content.Ratings[0].Value + "\n";
-        output += "Rotten Tomatoes: " + content.Ratings[1].Value + "\n";
-        output += "Country:         " + content.Country + "\n";
-        output += "Language:        " + content.Language + "\n";
-        output += "Plot:            " + content.Plot + "\n";
-        output += "Actors:          " + content.Actors + "\n";
+        output += chalk.yellow("TITLE:           " + content.Title + "\n");
+        output += chalk.yellow("YEAR:            " + content.Year + "\n");
+        output += chalk.yellow("IMDB Rating:     " + content.Ratings[0].Value + "\n");
+        output += chalk.yellow("Rotten Tomatoes: " + content.Ratings[1].Value + "\n");
+        output += chalk.yellow("Country:         " + content.Country + "\n");
+        output += chalk.yellow("Language:        " + content.Language + "\n");
+        output += chalk.yellow("Plot:            " + content.Plot + "\n");
+        output += chalk.yellow("Actors:          " + content.Actors + "\n");
       }
     } else {
       output += error;
