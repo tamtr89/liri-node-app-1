@@ -36,7 +36,7 @@ function init() {
       "name": 'commandChoice',
       "message": 'What would you like to do?',
       "type": 'list',
-      "choices": ['Show My Tweets', 'Spotify a Song', 'Fetch Movie Info', 'Run Script', 'Clear Log', 'Exit Liri'],
+      "choices": ['Show My Tweets', 'Spotify a Song', 'Fetch Movie Info', 'Do What It Says', 'Clear Log', 'Exit Liri'],
     },
     {
       type: 'input',
@@ -75,7 +75,7 @@ function brain(command, args) {
     case "Fetch Movie Info":
       movieThis(args);
       break;
-    case "Run Script":
+    case "Do What It Says":
       doIt();
       break;
     case "Clear Log":
@@ -86,6 +86,7 @@ function brain(command, args) {
       break;
     default:
       console.log("Sorry, I don't know how to do that yet.");
+      init();
   }
 }
 //-----------------------------------------------------------------------------
