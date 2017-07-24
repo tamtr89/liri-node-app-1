@@ -34,7 +34,7 @@ function init() {
   inquirer.prompt([
     {
       "name": 'commandChoice',
-      "message": 'What would you like to do?',
+      "message": chalk.magenta('What would you like to do?'),
       "type": 'list',
       "choices": ['Show My Tweets', 'Spotify a Song', 'Fetch Movie Info', 'Do What It Says', 'Clear Log', 'Exit Liri'],
     },
